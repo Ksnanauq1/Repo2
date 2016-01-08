@@ -9,7 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import src.models.Druzyny;
+import src.models.Teams;
 
 public class Main extends Application {
 	
@@ -18,7 +18,7 @@ public static void main(String[] agrs) {
 }
 
 Stage window;
-TableView<Druzyny> tabela;
+TableView<Teams> table;
 
 @Override 
 public void start(Stage primaryStage) throws Exception {
@@ -26,57 +26,57 @@ public void start(Stage primaryStage) throws Exception {
 	window.setTitle("Tabela ligi pi³karskiej");
 	
 	// Tworzenie tabeli
-	tabela = new TableView<>();
+	table = new TableView<>();
 	
-	TableColumn<Druzyny, String> colPozycja = new TableColumn<>("Pozycja");
-	colPozycja.setCellValueFactory(new PropertyValueFactory<Druzyny, String>("pozycja"));
+	TableColumn<Teams, String> colPosition = new TableColumn<>("Pozycja");
+	colPosition.setCellValueFactory(new PropertyValueFactory<Teams, String>("position"));
 	
-	TableColumn<Druzyny, String> colNazwa = new TableColumn<>("Nazwa");
-	colNazwa.setCellValueFactory(new PropertyValueFactory<Druzyny, String>("nazwa"));
+	TableColumn<Teams, String> colTeam = new TableColumn<>("Nazwa");
+	colTeam.setCellValueFactory(new PropertyValueFactory<Teams, String>("team"));
 	
-	TableColumn<Druzyny, String> colMecze = new TableColumn<>("Mecze");
-	colMecze.setCellValueFactory(new PropertyValueFactory<Druzyny, String>("mecze"));
+	TableColumn<Teams, String> colMatches = new TableColumn<>("Mecze");
+	colMatches.setCellValueFactory(new PropertyValueFactory<Teams, String>("matches"));
 	
-	TableColumn<Druzyny, String> colPunkty = new TableColumn<>("Punkty");
-	colPunkty.setCellValueFactory(new PropertyValueFactory<Druzyny, String>("punkty"));
+	TableColumn<Teams, String> colPoints = new TableColumn<>("Punkty");
+	colPoints.setCellValueFactory(new PropertyValueFactory<Teams, String>("points"));
 	
-	TableColumn<Druzyny, String> colBramki = new TableColumn<>("Bramki");
-	colBramki.setCellValueFactory(new PropertyValueFactory<Druzyny, String>("bramki"));
+	TableColumn<Teams, String> colGoals = new TableColumn<>("Bramki");
+	colGoals.setCellValueFactory(new PropertyValueFactory<Teams, String>("goals"));
 	
-	tabela.getColumns().addAll(
-			colPozycja, colNazwa, colMecze, colPunkty, colBramki
+	table.getColumns().addAll(
+			colPosition, colTeam, colMatches, colPoints, colGoals
 			);
 	
-	tabela.setItems( getDruzyny() );
+	table.setItems( getTeams() );
 	
 	VBox layout = new VBox(10);
-	layout.getChildren().addAll(tabela);
+	layout.getChildren().addAll(table);
 	
-	Scene scena = new Scene(layout, 500,500);
-	window.setScene(scena);
+	Scene scene = new Scene(layout, 500,500);
+	window.setScene(scene);
 	window.show();
 }
 
-public ObservableList<Druzyny> getDruzyny() {
-	ObservableList<Druzyny> druzyny = FXCollections.observableArrayList(
-			new Druzyny("1", "Piast Gliwice", "20", "42", "37–25"),
-			new Druzyny("2", "Legia Warszawa", "20", "37", "39–20"),
-			new Druzyny("3", "Cracovia", "21", "36", "44–29"),
-			new Druzyny("4", "Pogoñ Szczecin", "21", "36", "26–20"),
-			new Druzyny("5", "Ruch Chorzów", "21", "31", "27–31"),
-			new Druzyny("6", "Lech Poznañ", "20", "28", "23–23"),
-			new Druzyny("7", "Zag³êbie Lubin", "21", "27", "27–31"),
-			new Druzyny("8", "Jagiellonia Bia³ystok", "21", "25", "30–34"),
-			new Druzyny("9", "Górnik £êczna", "21", "25", "25–32"),
-			new Druzyny("10", "Lechia Gdañsk", "21", "24", "25–27"),
-			new Druzyny("11", "Korona Kielce", "20", "24", "15–20"),
-			new Druzyny("12", "Termalica Bruk-Bet Nieciecza", "21", "24", "21–27"),
-			new Druzyny("13", "Wis³a Kraków", "21", "23", "28–23"),
-			new Druzyny("14", "Górnik Zabrze", "21", "21", "29–32"),
-			new Druzyny("15", "Podbeskidzie Bielsko-Bia³a", "20", "21", "21–34"),
-			new Druzyny("16", "Œl¹sk Wroc³aw", "20", "19", "20–29")
+public ObservableList<Teams> getTeams() {
+	ObservableList<Teams> teams = FXCollections.observableArrayList(
+			new Teams("1", "Piast Gliwice", "20", "42", "37–25"),
+			new Teams("2", "Legia Warszawa", "20", "37", "39–20"),
+			new Teams("3", "Cracovia", "21", "36", "44–29"),
+			new Teams("4", "Pogoñ Szczecin", "21", "36", "26–20"),
+			new Teams("5", "Ruch Chorzów", "21", "31", "27–31"),
+			new Teams("6", "Lech Poznañ", "20", "28", "23–23"),
+			new Teams("7", "Zag³êbie Lubin", "21", "27", "27–31"),
+			new Teams("8", "Jagiellonia Bia³ystok", "21", "25", "30–34"),
+			new Teams("9", "Górnik £êczna", "21", "25", "25–32"),
+			new Teams("10", "Lechia Gdañsk", "21", "24", "25–27"),
+			new Teams("11", "Korona Kielce", "20", "24", "15–20"),
+			new Teams("12", "Termalica Bruk-Bet Nieciecza", "21", "24", "21–27"),
+			new Teams("13", "Wis³a Kraków", "21", "23", "28–23"),
+			new Teams("14", "Górnik Zabrze", "21", "21", "29–32"),
+			new Teams("15", "Podbeskidzie Bielsko-Bia³a", "20", "21", "21–34"),
+			new Teams("16", "Œl¹sk Wroc³aw", "20", "19", "20–29")
 			);
 	
-	return druzyny;
+	return teams;
 }
 }
